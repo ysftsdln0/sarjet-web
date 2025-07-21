@@ -11,7 +11,9 @@ import {
   Play,
   Mail,
   Github,
-  Twitter
+  Twitter,
+  Linkedin,
+  User
 } from 'lucide-react';
 import ReactCountryFlag from 'react-country-flag';
 import { useState, useEffect } from 'react';
@@ -32,6 +34,7 @@ export default function Home() {
         features: 'Features',
         howItWorks: 'How it Works',
         about: 'About',
+        developer: 'Developer',
         faq: 'FAQ'
       },
       hero: {
@@ -79,6 +82,11 @@ export default function Home() {
         description1: 'Şarjet is born from the vision of making electric vehicle adoption seamless and accessible for everyone in Turkey. Starting in Istanbul and expanding nationwide, we\'re building the future of sustainable transportation.',
         description2: 'Our mission is to eliminate range anxiety and make EV charging as simple as finding the nearest gas station. With real-time data from OpenChargeMap and intuitive design, we\'re powering the electric revolution one charge at a time.'
       },
+      developer: {
+        title: 'About the Developer',
+        content: 'Hello! I\'m Yusuf Efe Taşdelen, a 19-year-old university student. In this era where electric vehicles are becoming widespread, I noticed that finding charging stations is still not easy enough for users. To solve this need, I developed Şarjet from scratch - a mobile application that allows electric vehicle owners to easily find nearby charging stations on a map.\n\nIn this project that I developed alone, real-time data is pulled from the OpenChargeMap API and the most suitable stations are listed according to users\' locations. Although it currently focuses on Istanbul, my goal is to make Şarjet usable throughout Turkey.\n\nAs a university student, I continue to work on taking this project I developed with limited resources even further and continuously improving the user experience. Your opinions and feedback are very valuable to me!',
+        socialContact: 'Connect with me:'
+      },
       faq: {
         title: 'Frequently Asked Questions',
         q1: {
@@ -108,6 +116,7 @@ export default function Home() {
         features: 'Özellikler',
         howItWorks: 'Nasıl Çalışır',
         about: 'Hakkımızda',
+        developer: 'Geliştirici',
         faq: 'SSS'
       },
       hero: {
@@ -154,6 +163,11 @@ export default function Home() {
         title: 'Şarjet Hakkında',
         description1: 'Şarjet, Türkiye\'deki herkes için elektrikli araç kullanımını sorunsuz ve erişilebilir hale getirme vizyonundan doğmuştur. İstanbul\'da başlayıp ülke geneline yayılarak, sürdürülebilir ulaşımın geleceğini inşa ediyoruz.',
         description2: 'Misyonumuz menzil kaygısını ortadan kaldırmak ve EV şarjını en yakın benzin istasyonunu bulmak kadar basit hale getirmektir. OpenChargeMap\'ten gerçek zamanlı veri ve sezgisel tasarımla, elektrikli devrimi her seferinde bir şarjla güçlendiriyoruz.'
+      },
+      developer: {
+        title: 'Geliştirici Hakkında',
+        content: 'Merhaba! Ben Yusuf Efe Taşdelen, 19 yaşında bir üniversite öğrencisiyim. Elektrikli araçların yaygınlaştığı bu dönemde, şarj istasyonlarını bulmanın kullanıcılar için hâlâ yeterince kolay olmadığını fark ettim. Bu ihtiyacı çözmek için sıfırdan geliştirdiğim Şarjet, elektrikli araç sahiplerinin yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır.\n\nTek başıma geliştirdiğim bu projede, OpenChargeMap API\'sinden gerçek zamanlı veriler çekiliyor ve kullanıcıların konumlarına göre en uygun istasyonlar listeleniyor. Şu an İstanbul odaklı çalışsa da, hedefim Şarjet\'i Türkiye genelinde kullanılabilir hale getirmek.\n\nÜniversite öğrencisi olarak sınırlı kaynaklarla geliştirdiğim bu projeyi daha da ileri taşımak ve kullanıcı deneyimini sürekli iyileştirmek için çalışıyorum. Görüşleriniz ve geri bildirimleriniz benim için çok değerli!',
+        socialContact: 'Benimle iletişime geçin:'
       },
       faq: {
         title: 'Sık Sorulan Sorular',
@@ -224,7 +238,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Zap className="h-8 w-8 text-emerald-400" />
+              <Zap className="h-8 w-8 text-[#00b4d8]" />
               <span className="text-xl font-bold">Şarjet</span>
             </motion.div>
             <motion.div 
@@ -234,17 +248,18 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="hidden md:flex space-x-8">
-                <a href="#features" className="hover:text-emerald-400 transition-colors">{t.nav.features}</a>
-                <a href="#how-it-works" className="hover:text-emerald-400 transition-colors">{t.nav.howItWorks}</a>
-                <a href="#about" className="hover:text-emerald-400 transition-colors">{t.nav.about}</a>
-                <a href="#faq" className="hover:text-emerald-400 transition-colors">{t.nav.faq}</a>
+                <a href="#features" className="hover:text-[#00b4d8] transition-colors">{t.nav.features}</a>
+                <a href="#how-it-works" className="hover:text-[#00b4d8] transition-colors">{t.nav.howItWorks}</a>
+                <a href="#about" className="hover:text-[#00b4d8] transition-colors">{t.nav.about}</a>
+                <a href="#developer" className="hover:text-[#00b4d8] transition-colors">{t.nav.developer}</a>
+                <a href="#faq" className="hover:text-[#00b4d8] transition-colors">{t.nav.faq}</a>
               </div>
               
               {/* Language Dropdown */}
               <div className="relative language-dropdown">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-slate-700 hover:border-emerald-400 transition-colors"
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-slate-700 hover:border-[#00b4d8] transition-colors"
                 >
                   <ReactCountryFlag 
                     countryCode={languages.find(lang => lang.code === selectedLanguage)?.flag || 'US'} 
@@ -299,7 +314,7 @@ export default function Home() {
             animate="animate"
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] bg-clip-text text-transparent"
               variants={fadeInUp}
             >
               {t.hero.title.split('\n').map((line, index) => (
@@ -319,7 +334,7 @@ export default function Home() {
               className="flex justify-center mb-12"
               variants={fadeInUp}
             >
-              <button className="flex items-center justify-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-xl hover:bg-emerald-700 transition-colors">
+              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-6 py-3 rounded-xl hover:bg-[#03045e] transition-colors">
                 <Play className="h-5 w-5" />
                 <span>{t.hero.downloadAndroid}</span>
               </button>
@@ -328,8 +343,8 @@ export default function Home() {
               className="relative"
               variants={fadeInUp}
             >
-              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-emerald-400/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                <Smartphone className="h-32 w-32 text-emerald-400" />
+              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-full flex items-center justify-center">
+                <Smartphone className="h-32 w-32 text-[#00b4d8]" />
               </div>
             </motion.div>
           </motion.div>
@@ -360,7 +375,7 @@ export default function Home() {
               className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
               variants={fadeInUp}
             >
-              <MapPin className="h-12 w-12 text-emerald-400 mb-4" />
+              <MapPin className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.realTime.title}</h3>
               <p className="text-slate-300">{t.features.realTime.description}</p>
             </motion.div>
@@ -368,7 +383,7 @@ export default function Home() {
               className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
               variants={fadeInUp}
             >
-              <Clock className="h-12 w-12 text-emerald-400 mb-4" />
+              <Clock className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.availability.title}</h3>
               <p className="text-slate-300">{t.features.availability.description}</p>
             </motion.div>
@@ -376,7 +391,7 @@ export default function Home() {
               className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
               variants={fadeInUp}
             >
-              <Filter className="h-12 w-12 text-emerald-400 mb-4" />
+              <Filter className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.filtering.title}</h3>
               <p className="text-slate-300">{t.features.filtering.description}</p>
             </motion.div>
@@ -408,7 +423,7 @@ export default function Home() {
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step1.title}</h3>
@@ -418,7 +433,7 @@ export default function Home() {
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step2.title}</h3>
@@ -428,7 +443,7 @@ export default function Home() {
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step3.title}</h3>
@@ -449,11 +464,11 @@ export default function Home() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-16">{t.screenshots.title}</h2>
             <div className="flex justify-center space-x-8">
-              <div className="w-64 h-96 bg-gradient-to-br from-emerald-400/20 to-blue-500/20 rounded-3xl flex items-center justify-center">
-                <Smartphone className="h-48 w-48 text-emerald-400/50" />
+              <div className="w-64 h-96 bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-3xl flex items-center justify-center">
+                <Smartphone className="h-48 w-48 text-[#00b4d8]/50" />
               </div>
-              <div className="w-64 h-96 bg-gradient-to-br from-blue-500/20 to-emerald-400/20 rounded-3xl flex items-center justify-center">
-                <MapPin className="h-48 w-48 text-blue-400/50" />
+              <div className="w-64 h-96 bg-gradient-to-br from-[#0077b6]/20 to-[#00b4d8]/20 rounded-3xl flex items-center justify-center">
+                <MapPin className="h-48 w-48 text-[#0077b6]/50" />
               </div>
             </div>
           </motion.div>
@@ -478,6 +493,68 @@ export default function Home() {
               <p className="text-lg text-slate-400">
                 {t.about.description2}
               </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Developer Section */}
+      <section id="developer" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center justify-center mb-6">
+              <User className="h-12 w-12 text-[#00b4d8] mr-4" />
+              <h2 className="text-4xl md:text-5xl font-bold text-white">{t.developer.title}</h2>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              {t.developer.content.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="text-lg text-slate-300 mb-6 text-center leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+              <div className="mt-8 p-6 bg-slate-800 rounded-xl border border-slate-700">
+                <p className="text-center text-[#00b4d8] font-medium mb-6">
+                  {t.developer.socialContact}
+                </p>
+                <div className="flex justify-center space-x-6">
+                  <a 
+                    href="https://github.com/ysftsdln0" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                  >
+                    <Github className="h-6 w-6 text-slate-300 group-hover:text-[#00b4d8] transition-colors" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/yusuf-efe-tasdelen/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                  >
+                    <Linkedin className="h-6 w-6 text-slate-300 group-hover:text-[#00b4d8] transition-colors" />
+                  </a>
+                  <a 
+                    href="https://x.com/ysftsdln" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                  >
+                    <Twitter className="h-6 w-6 text-slate-300 group-hover:text-[#00b4d8] transition-colors" />
+                  </a>
+                  <a 
+                    href="mailto:efe@tasdelen.net"
+                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                  >
+                    <Mail className="h-6 w-6 text-slate-300 group-hover:text-[#00b4d8] transition-colors" />
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -541,7 +618,7 @@ export default function Home() {
               {t.cta.subtitle}
             </p>
             <div className="flex justify-center">
-              <button className="flex items-center justify-center space-x-2 bg-emerald-600 text-white px-8 py-4 rounded-xl hover:bg-emerald-700 transition-colors">
+              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-8 py-4 rounded-xl hover:bg-[#03045e] transition-colors">
                 <Play className="h-6 w-6" />
                 <span>{t.cta.downloadAndroid}</span>
               </button>
@@ -555,17 +632,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Zap className="h-8 w-8 text-emerald-400" />
+              <Zap className="h-8 w-8 text-[#00b4d8]" />
               <span className="text-xl font-bold">Şarjet</span>
             </div>
             <div className="flex space-x-6">
-              <a href="mailto:contact@sarjet.com" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="mailto:contact@sarjet.com" className="text-slate-400 hover:text-[#00b4d8] transition-colors">
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="#" className="text-slate-400 hover:text-[#00b4d8] transition-colors">
                 <Github className="h-6 w-6" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="#" className="text-slate-400 hover:text-[#00b4d8] transition-colors">
                 <Twitter className="h-6 w-6" />
               </a>
             </div>

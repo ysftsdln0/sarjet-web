@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "npm run build && netlify deploy --prod --dir=.next",
+    "docker:build": "docker build -t sarjet-web .",
+    "docker:run": "docker run -p 3000:3000 sarjet-web"
   },
   "dependencies": {
     "framer-motion": "^12.23.6",

@@ -12,8 +12,10 @@ import {
   Mail,
   Github,
   Twitter,
+  Linkedin,
   User,
-  Linkedin
+  Sun,
+  Moon
 } from 'lucide-react';
 import ReactCountryFlag from 'react-country-flag';
 import { useState, useEffect } from 'react';
@@ -21,6 +23,11 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [selectedLanguage, setSelectedLanguage] = useState('EN');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const languages = [
     { code: 'EN', name: 'English', flag: 'US' },
@@ -82,6 +89,11 @@ export default function Home() {
         description1: 'Şarjet is born from the vision of making electric vehicle adoption seamless and accessible for everyone in Turkey. Starting in Istanbul and expanding nationwide, we\'re building the future of sustainable transportation.',
         description2: 'Our mission is to eliminate range anxiety and make EV charging as simple as finding the nearest gas station. With real-time data from OpenChargeMap and intuitive design, we\'re powering the electric revolution one charge at a time.'
       },
+      developer: {
+        title: 'About the Developer',
+        content: 'Hello! I\'m Yusuf Efe Taşdelen, a 19-year-old university student. In this era where electric vehicles are becoming widespread, I noticed that finding charging stations is still not easy enough for users. To solve this need, I developed Şarjet from scratch - a mobile application that allows electric vehicle owners to easily find nearby charging stations on a map.\n\nIn this project that I developed alone, real-time data is pulled from the OpenChargeMap API and the most suitable stations are listed according to users\' locations. Although it currently focuses on Istanbul, my goal is to make Şarjet usable throughout Turkey.\n\nAs a university student, I continue to work on taking this project I developed with limited resources even further and continuously improving the user experience. Your opinions and feedback are very valuable to me!',
+        socialContact: 'Connect with me:'
+      },
       faq: {
         title: 'Frequently Asked Questions',
         q1: {
@@ -90,7 +102,7 @@ export default function Home() {
         },
         q2: {
           question: 'Which cities are supported?',
-          answer: 'Currently, we support Istanbul with comprehensive coverage. We\'re expanding to other cities soon.'
+          answer: 'Currently, we support Istanbul with comprehensive coverage. We\'re expanding to other Turkish cities soon.'
         },
         q3: {
           question: 'How accurate is the real-time data?',
@@ -101,11 +113,6 @@ export default function Home() {
         title: 'Ready to Power Your Journey?',
         subtitle: 'Join thousands of EV drivers who trust Şarjet for their charging needs.',
         downloadAndroid: 'Download for Android'
-      },
-      developer: {
-        title: 'About the Developer',
-        content: 'Hello! I\'m Yusuf Efe Taşdelen, a 19-year-old university student. In this era where electric vehicles are becoming widespread, I noticed that finding charging stations is still not easy enough for users. To solve this need, I developed Şarjet from scratch, a mobile application that allows electric vehicle owners to easily find nearby charging stations on the map.\n\nIn this project that I developed alone, real-time data is pulled from the OpenChargeMap API and the most suitable stations are listed according to users\' locations. Although it currently works Istanbul-focused, my goal is to make Şarjet usable throughout Turkey.\n\nAs a university student, I am working to take this project, which I developed with limited resources, even further and continuously improve the user experience. Your opinions and feedback are very valuable to me!',
-        socialContact: 'You can reach me through the following channels for your opinions and suggestions'
       },
       footer: {
         copyright: '© 2025 Şarjet. All rights reserved. Made with ⚡ for a sustainable future.'
@@ -164,6 +171,11 @@ export default function Home() {
         description1: 'Şarjet, Türkiye\'deki herkes için elektrikli araç kullanımını sorunsuz ve erişilebilir hale getirme vizyonundan doğmuştur. İstanbul\'da başlayıp ülke geneline yayılarak, sürdürülebilir ulaşımın geleceğini inşa ediyoruz.',
         description2: 'Misyonumuz menzil kaygısını ortadan kaldırmak ve EV şarjını en yakın benzin istasyonunu bulmak kadar basit hale getirmektir. OpenChargeMap\'ten gerçek zamanlı veri ve sezgisel tasarımla, elektrikli devrimi her seferinde bir şarjla güçlendiriyoruz.'
       },
+      developer: {
+        title: 'Geliştirici Hakkında',
+        content: 'Merhaba! Ben Yusuf Efe Taşdelen, 19 yaşında bir üniversite öğrencisiyim. Elektrikli araçların yaygınlaştığı bu dönemde, şarj istasyonlarını bulmanın kullanıcılar için hâlâ yeterince kolay olmadığını fark ettim. Bu ihtiyacı çözmek için sıfırdan geliştirdiğim Şarjet, elektrikli araç sahiplerinin yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır.\n\nTek başıma geliştirdiğim bu projede, OpenChargeMap API\'sinden gerçek zamanlı veriler çekiliyor ve kullanıcıların konumlarına göre en uygun istasyonlar listeleniyor. Şu an İstanbul odaklı çalışsa da, hedefim Şarjet\'i Türkiye genelinde kullanılabilir hale getirmek.\n\nÜniversite öğrencisi olarak sınırlı kaynaklarla geliştirdiğim bu projeyi daha da ileri taşımak ve kullanıcı deneyimini sürekli iyileştirmek için çalışıyorum. Görüşleriniz ve geri bildirimleriniz benim için çok değerli!',
+        socialContact: 'Benimle iletişime geçin:'
+      },
       faq: {
         title: 'Sık Sorulan Sorular',
         q1: {
@@ -172,7 +184,7 @@ export default function Home() {
         },
         q2: {
           question: 'Hangi şehirler destekleniyor?',
-          answer: 'Şu anda İstanbul\'u kapsamlı bir şekilde destekliyoruz. Yakında diğer şehirlere de genişliyoruz.'
+          answer: 'Şu anda İstanbul\'u kapsamlı bir şekilde destekliyoruz. Yakında diğer Türk şehirlerine de genişliyoruz.'
         },
         q3: {
           question: 'Gerçek zamanlı veriler ne kadar doğru?',
@@ -183,11 +195,6 @@ export default function Home() {
         title: 'Yolculuğunuza Güç Katmaya Hazır mısınız?',
         subtitle: 'Şarj ihtiyaçları için Şarjet\'e güvenen binlerce EV sürücüsüne katılın.',
         downloadAndroid: 'Android için İndir'
-      },
-      developer: {
-        title: 'Geliştirici Hakkında',
-        content: 'Merhaba! Ben Yusuf Efe Taşdelen, 19 yaşında bir üniversite öğrencisiyim. Elektrikli araçların yaygınlaştığı bu dönemde, şarj istasyonlarını bulmanın kullanıcılar için hâlâ yeterince kolay olmadığını fark ettim. Bu ihtiyacı çözmek için sıfırdan geliştirdiğim Şarjet, elektrikli araç sahiplerinin yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır.\n\nTek başıma geliştirdiğim bu projede, OpenChargeMap API\'sinden gerçek zamanlı veriler çekiliyor ve kullanıcıların konumlarına göre en uygun istasyonlar listeleniyor. Şu an İstanbul odaklı çalışsa da, hedefim Şarjet\'i Türkiye genelinde kullanılabilir hale getirmek.\n\nÜniversite öğrencisi olarak sınırlı kaynaklarla geliştirdiğim bu projeyi daha da ileri taşımak ve kullanıcı deneyimini sürekli iyileştirmek için çalışıyorum. Görüşleriniz ve geri bildirimleriniz benim için çok değerli!',
-        socialContact: 'Görüş ve önerileriniz için aşağıdaki adreslerden ulaşabilirsiniz'
       },
       footer: {
         copyright: '© 2025 Şarjet. Tüm hakları saklıdır. Sürdürülebilir bir gelecek için ⚡ ile yapıldı.'
@@ -212,6 +219,12 @@ export default function Home() {
     };
   }, []);
 
+  // Check system theme preference on mount
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
+  }, []);
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -227,9 +240,9 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-slate-900 text-white min-h-screen">
+    <div className={`${isDarkMode ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'} min-h-screen transition-colors duration-300`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-800">
+      <nav className={`fixed top-0 w-full ${isDarkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'} backdrop-blur-md z-50 border-b transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.div 
@@ -238,7 +251,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Zap className="h-8 w-8 text-emerald-400" />
+              <Zap className="h-8 w-8 text-[#00b4d8]" />
               <span className="text-xl font-bold">Şarjet</span>
             </motion.div>
             <motion.div 
@@ -248,18 +261,31 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="hidden md:flex space-x-8">
-                <a href="#features" className="hover:text-emerald-400 transition-colors">{t.nav.features}</a>
-                <a href="#how-it-works" className="hover:text-emerald-400 transition-colors">{t.nav.howItWorks}</a>
-                <a href="#about" className="hover:text-emerald-400 transition-colors">{t.nav.about}</a>
-                <a href="#developer" className="hover:text-emerald-400 transition-colors">{t.nav.developer}</a>
-                <a href="#faq" className="hover:text-emerald-400 transition-colors">{t.nav.faq}</a>
+                <a href="#features" className="hover:text-[#00b4d8] transition-colors">{t.nav.features}</a>
+                <a href="#how-it-works" className="hover:text-[#00b4d8] transition-colors">{t.nav.howItWorks}</a>
+                <a href="#about" className="hover:text-[#00b4d8] transition-colors">{t.nav.about}</a>
+                <a href="#developer" className="hover:text-[#00b4d8] transition-colors">{t.nav.developer}</a>
+                <a href="#faq" className="hover:text-[#00b4d8] transition-colors">{t.nav.faq}</a>
               </div>
+              
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-800 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} transition-colors`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-5 w-5 text-[#00b4d8]" />
+                ) : (
+                  <Moon className="h-5 w-5 text-[#00b4d8]" />
+                )}
+              </button>
               
               {/* Language Dropdown */}
               <div className="relative language-dropdown">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-slate-700 hover:border-emerald-400 transition-colors"
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg border ${isDarkMode ? 'border-slate-700 hover:border-[#00b4d8]' : 'border-slate-300 hover:border-[#00b4d8]'} transition-colors`}
                 >
                   <ReactCountryFlag 
                     countryCode={languages.find(lang => lang.code === selectedLanguage)?.flag || 'US'} 
@@ -277,7 +303,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50"
+                    className={`absolute right-0 mt-2 w-40 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-lg shadow-xl z-50 transition-colors duration-300`}
                   >
                     {languages.map((language) => (
                       <button
@@ -286,7 +312,7 @@ export default function Home() {
                           setSelectedLanguage(language.code);
                           setIsDropdownOpen(false);
                         }}
-                        className="w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-slate-700 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                        className={`w-full flex items-center space-x-3 px-4 py-3 text-left ${isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-100'} transition-colors first:rounded-t-lg last:rounded-b-lg`}
                       >
                         <ReactCountryFlag 
                           countryCode={language.flag} 
@@ -314,7 +340,7 @@ export default function Home() {
             animate="animate"
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] bg-clip-text text-transparent"
               variants={fadeInUp}
             >
               {t.hero.title.split('\n').map((line, index) => (
@@ -325,7 +351,7 @@ export default function Home() {
               ))}
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto"
+              className={`text-xl md:text-2xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-8 max-w-3xl mx-auto transition-colors duration-300`}
               variants={fadeInUp}
             >
               {t.hero.subtitle}
@@ -334,7 +360,7 @@ export default function Home() {
               className="flex justify-center mb-12"
               variants={fadeInUp}
             >
-              <button className="flex items-center justify-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-xl hover:bg-emerald-700 transition-colors">
+              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-6 py-3 rounded-xl hover:bg-[#03045e] transition-colors">
                 <Play className="h-5 w-5" />
                 <span>{t.hero.downloadAndroid}</span>
               </button>
@@ -343,8 +369,8 @@ export default function Home() {
               className="relative"
               variants={fadeInUp}
             >
-              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-emerald-400/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                <Smartphone className="h-32 w-32 text-emerald-400" />
+              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-full flex items-center justify-center">
+                <Smartphone className="h-32 w-32 text-[#00b4d8]" />
               </div>
             </motion.div>
           </motion.div>
@@ -352,7 +378,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+      <section id="features" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -362,7 +388,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.features.title}</h2>
-            <p className="text-xl text-slate-300">{t.features.subtitle}</p>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.features.subtitle}</p>
           </motion.div>
           <motion.div 
             className="grid md:grid-cols-3 gap-8"
@@ -372,28 +398,28 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.div 
-              className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
-              <MapPin className="h-12 w-12 text-emerald-400 mb-4" />
+              <MapPin className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.realTime.title}</h3>
-              <p className="text-slate-300">{t.features.realTime.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.realTime.description}</p>
             </motion.div>
             <motion.div 
-              className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
-              <Clock className="h-12 w-12 text-emerald-400 mb-4" />
+              <Clock className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.availability.title}</h3>
-              <p className="text-slate-300">{t.features.availability.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.availability.description}</p>
             </motion.div>
             <motion.div 
-              className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
-              <Filter className="h-12 w-12 text-emerald-400 mb-4" />
+              <Filter className="h-12 w-12 text-[#00b4d8] mb-4" />
               <h3 className="text-xl font-semibold mb-2">{t.features.filtering.title}</h3>
-              <p className="text-slate-300">{t.features.filtering.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.filtering.description}</p>
             </motion.div>
           </motion.div>
         </div>
@@ -410,7 +436,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.howItWorks.title}</h2>
-            <p className="text-xl text-slate-300">{t.howItWorks.subtitle}</p>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.subtitle}</p>
           </motion.div>
           <motion.div 
             className="grid md:grid-cols-3 gap-8"
@@ -423,38 +449,38 @@ export default function Home() {
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step1.title}</h3>
-              <p className="text-slate-300">{t.howItWorks.step1.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step1.description}</p>
             </motion.div>
             <motion.div 
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step2.title}</h3>
-              <p className="text-slate-300">{t.howItWorks.step2.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step2.description}</p>
             </motion.div>
             <motion.div 
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold">3</span>
               </div>
               <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step3.title}</h3>
-              <p className="text-slate-300">{t.howItWorks.step3.description}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step3.description}</p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* App Screenshots */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -464,11 +490,11 @@ export default function Home() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-16">{t.screenshots.title}</h2>
             <div className="flex justify-center space-x-8">
-              <div className="w-64 h-96 bg-gradient-to-br from-emerald-400/20 to-blue-500/20 rounded-3xl flex items-center justify-center">
-                <Smartphone className="h-48 w-48 text-emerald-400/50" />
+              <div className="w-64 h-96 bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-3xl flex items-center justify-center">
+                <Smartphone className="h-48 w-48 text-[#00b4d8]/50" />
               </div>
-              <div className="w-64 h-96 bg-gradient-to-br from-blue-500/20 to-emerald-400/20 rounded-3xl flex items-center justify-center">
-                <MapPin className="h-48 w-48 text-blue-400/50" />
+              <div className="w-64 h-96 bg-gradient-to-br from-[#0077b6]/20 to-[#00b4d8]/20 rounded-3xl flex items-center justify-center">
+                <MapPin className="h-48 w-48 text-[#0077b6]/50" />
               </div>
             </div>
           </motion.div>
@@ -487,10 +513,10 @@ export default function Home() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8">{t.about.title}</h2>
             <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-slate-300 mb-6">
+              <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-6 transition-colors duration-300`}>
                 {t.about.description1}
               </p>
-              <p className="text-lg text-slate-400">
+              <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
                 {t.about.description2}
               </p>
             </div>
@@ -499,7 +525,7 @@ export default function Home() {
       </section>
 
       {/* Developer Section */}
-      <section id="developer" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+      <section id="developer" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -509,17 +535,17 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div className="flex items-center justify-center mb-6">
-              <User className="h-12 w-12 text-emerald-400 mr-4" />
-              <h2 className="text-4xl md:text-5xl font-bold">{t.developer.title}</h2>
+              <User className="h-12 w-12 text-[#00b4d8] mr-4" />
+              <h2 className="text-4xl md:text-5xl font-bold text-white">{t.developer.title}</h2>
             </div>
             <div className="max-w-4xl mx-auto">
               {t.developer.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-lg text-slate-300 mb-6 text-center leading-relaxed">
+                <p key={index} className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-6 text-center leading-relaxed transition-colors duration-300`}>
                   {paragraph}
                 </p>
               ))}
-              <div className="mt-8 p-6 bg-slate-800/50 rounded-xl border border-slate-700">
-                <p className="text-center text-emerald-400 font-medium mb-6">
+              <div className={`mt-8 p-6 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-xl border transition-colors duration-300`}>
+                <p className="text-center text-[#00b4d8] font-medium mb-6">
                   {t.developer.socialContact}
                 </p>
                 <div className="flex justify-center space-x-6">
@@ -527,31 +553,31 @@ export default function Home() {
                     href="https://github.com/ysftsdln0" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
                   >
-                    <Github className="h-6 w-6 text-slate-300 group-hover:text-emerald-400 transition-colors" />
+                    <Github className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
                   </a>
                   <a 
-                    href="https://twitter.com/ysftsdln0" 
+                    href="https://www.linkedin.com/in/yusuf-efe-tasdelen/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
                   >
-                    <Twitter className="h-6 w-6 text-slate-300 group-hover:text-emerald-400 transition-colors" />
+                    <Linkedin className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
+                  </a>
+                  <a 
+                    href="https://x.com/ysftsdln" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
+                  >
+                    <Twitter className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
                   </a>
                   <a 
                     href="mailto:efe@tasdelen.net"
-                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
+                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
                   >
-                    <Mail className="h-6 w-6 text-slate-300 group-hover:text-emerald-400 transition-colors" />
-                  </a>
-                  <a 
-                    href="https://linkedin.com/in/yusufefetasdelen" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors group"
-                  >
-                    <Linkedin className="h-6 w-6 text-slate-300 group-hover:text-emerald-400 transition-colors" />
+                    <Mail className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
                   </a>
                 </div>
               </div>
@@ -561,7 +587,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="faq" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -580,32 +606,32 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.div 
-              className="bg-slate-800 p-6 rounded-xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
               <h3 className="text-lg font-semibold mb-2">{t.faq.q1.question}</h3>
-              <p className="text-slate-300">{t.faq.q1.answer}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q1.answer}</p>
             </motion.div>
             <motion.div 
-              className="bg-slate-800 p-6 rounded-xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
               <h3 className="text-lg font-semibold mb-2">{t.faq.q2.question}</h3>
-              <p className="text-slate-300">{t.faq.q2.answer}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q2.answer}</p>
             </motion.div>
             <motion.div 
-              className="bg-slate-800 p-6 rounded-xl border border-slate-700"
+              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
               variants={fadeInUp}
             >
               <h3 className="text-lg font-semibold mb-2">{t.faq.q3.question}</h3>
-              <p className="text-slate-300">{t.faq.q3.answer}</p>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q3.answer}</p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -614,11 +640,11 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8">{t.cta.title}</h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-8 transition-colors duration-300`}>
               {t.cta.subtitle}
             </p>
             <div className="flex justify-center">
-              <button className="flex items-center justify-center space-x-2 bg-emerald-600 text-white px-8 py-4 rounded-xl hover:bg-emerald-700 transition-colors">
+              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-8 py-4 rounded-xl hover:bg-[#03045e] transition-colors">
                 <Play className="h-6 w-6" />
                 <span>{t.cta.downloadAndroid}</span>
               </button>
@@ -628,26 +654,26 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+      <footer className={`${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-slate-100 border-slate-200'} border-t py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Zap className="h-8 w-8 text-emerald-400" />
+              <Zap className="h-8 w-8 text-[#00b4d8]" />
               <span className="text-xl font-bold">Şarjet</span>
             </div>
             <div className="flex space-x-6">
-              <a href="mailto:contact@sarjet.com" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="mailto:contact@sarjet.com" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="#" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
                 <Github className="h-6 w-6" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <a href="#" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
                 <Twitter className="h-6 w-6" />
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-slate-800 text-center text-slate-400">
+          <div className={`mt-8 pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} text-center ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
             <p>{t.footer.copyright}</p>
           </div>
         </div>
