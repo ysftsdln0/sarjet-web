@@ -115,7 +115,7 @@ export default function Home() {
         downloadAndroid: 'Download for Android'
       },
       footer: {
-        copyright: '© 2025 Şarjet. All rights reserved. Made with ⚡ for a sustainable future.'
+        copyright: '© 2025 Şarjet.'
       }
     },
     TR: {
