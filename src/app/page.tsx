@@ -197,7 +197,7 @@ export default function Home() {
         downloadAndroid: 'Android için İndir'
       },
       footer: {
-        copyright: '© 2025 Şarjet. Tüm hakları saklıdır. Sürdürülebilir bir gelecek için ⚡ ile yapıldı.'
+        copyright: '© 2025 Şarjet.'
       }
     }
   };
