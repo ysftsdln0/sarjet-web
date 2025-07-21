@@ -108,7 +108,7 @@ export default function Home() {
         downloadAndroid: 'Download for Android'
       },
       footer: {
-        copyright: '© 2025 Şarjet. All rights reserved. Made with ⚡ for a sustainable future.'
+        copyright: '2025 Şarjet'
       }
     },
     TR: {
@@ -190,7 +190,7 @@ export default function Home() {
         downloadAndroid: 'Android için İndir'
       },
       footer: {
-        copyright: '© 2025 Şarjet. Tüm hakları saklıdır. Sürdürülebilir bir gelecek için ⚡ ile yapıldı.'
+        copyright: '2025 Şarjet'
       }
     }
   };
@@ -510,7 +510,7 @@ export default function Home() {
           >
             <div className="flex items-center justify-center mb-6">
               <User className="h-12 w-12 text-[#00b4d8] mr-4" />
-              <h2 className="text-4xl md:text-5xl font-bold text-white">{t.developer.title}</h2>
+              <h2 className="text-4xl md:text-5xl font-bold ">{t.developer.title}</h2>
             </div>
             <div className="max-w-4xl mx-auto">
               {t.developer.content.split('\n\n').map((paragraph, index) => (
