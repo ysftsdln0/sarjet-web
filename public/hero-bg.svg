@@ -1,0 +1,32 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+<path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(0, 85, 165, 0.1)" stroke-width="1"/>
+</pattern>
+<pattern id="dots" width="50" height="50" patternUnits="userSpaceOnUse">
+<circle cx="25" cy="25" r="2" fill="rgba(0, 180, 216, 0.3)"/>
+</pattern>
+<linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+<stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+</linearGradient>
+</defs>
+<rect width="1920" height="1080" fill="url(#heroGradient)"/>
+<rect width="1920" height="1080" fill="url(#grid)"/>
+<rect width="1920" height="1080" fill="url(#dots)"/>
+<!-- EV Charging related illustrations -->
+<g opacity="0.1">
+<!-- Charging bolt pattern -->
+<path d="M200 200 L220 180 L210 180 L225 160 L205 160 L215 180 L205 180 Z" fill="#00b4d8"/>
+<path d="M400 300 L420 280 L410 280 L425 260 L405 260 L415 280 L405 280 Z" fill="#f97316"/>
+<path d="M600 400 L620 380 L610 380 L625 360 L605 360 L615 380 L605 380 Z" fill="#0055A5"/>
+<path d="M1400 200 L1420 180 L1410 180 L1425 160 L1405 160 L1415 180 L1405 180 Z" fill="#00b4d8"/>
+<path d="M1600 500 L1620 480 L1610 480 L1625 460 L1605 460 L1615 480 L1605 480 Z" fill="#f97316"/>
+<!-- Map pin pattern -->
+<circle cx="300" cy="600" r="8" fill="#0055A5"/>
+<path d="M300 592 C296 592 293 595 293 599 C293 603 300 614 300 614 S307 603 307 599 C307 595 304 592 300 592 Z" fill="#0055A5"/>
+<circle cx="1200" cy="400" r="8" fill="#00b4d8"/>
+<path d="M1200 392 C1196 392 1193 395 1193 399 C1193 403 1200 414 1200 414 S1207 403 1207 399 C1207 395 1204 392 1200 392 Z" fill="#00b4d8"/>
+</g>
+</svg>

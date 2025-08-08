@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { 
   MapPin, 
   Zap, 
@@ -15,18 +15,61 @@ import {
   Linkedin,
   User,
   Sun,
-  Moon
+  Moon,
+  Menu,
+  X,
+  Download,
+  Search,
+  Navigation,
+  Battery,
+  Star,
+  ChevronRight
 } from 'lucide-react';
 import ReactCountryFlag from 'react-country-flag';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [selectedLanguage, setSelectedLanguage] = useState('EN');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Refs for scroll animations
+  const heroRef = useRef(null);
+  const featuresRef = useRef(null);
+  const howItWorksRef = useRef(null);
+  const aboutRef = useRef(null);
+  
+  const heroInView = useInView(heroRef, { once: true });
+  const featuresInView = useInView(featuresRef, { once: true });
+  const howItWorksInView = useInView(howItWorksRef, { once: true });
+  const aboutInView = useInView(aboutRef, { once: true });
+
+  // Handle scroll for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
   };
 
   const languages = [
@@ -81,9 +124,6 @@ export default function Home() {
           description: 'Arrive at your chosen station and start charging with confidence.'
         }
       },
-      screenshots: {
-        title: 'Experience Şarjet'
-      },
       about: {
         title: 'About Şarjet',
         description1: 'Şarjet is born from the vision of making electric vehicle adoption seamless and accessible for everyone in Turkey. Starting in Istanbul and expanding nationwide, we\'re building the future of sustainable transportation.',
@@ -115,7 +155,7 @@ export default function Home() {
         downloadAndroid: 'Download for Android'
       },
       footer: {
-        copyright: '© 2025 Şarjet.'
+        copyright: '© 2025 Şarjet'
       }
     },
     TR: {
@@ -163,9 +203,6 @@ export default function Home() {
           description: 'Seçtiğiniz istasyona varın ve güvenle şarj etmeye başlayın.'
         }
       },
-      screenshots: {
-        title: 'Şarjet\'i Deneyimle'
-      },
       about: {
         title: 'Şarjet Hakkında',
         description1: 'Şarjet, Türkiye\'deki herkes için elektrikli araç kullanımını sorunsuz ve erişilebilir hale getirme vizyonundan doğmuştur. İstanbul\'da başlayıp ülke geneline yayılarak, sürdürülebilir ulaşımın geleceğini inşa ediyoruz.',
@@ -197,7 +234,7 @@ export default function Home() {
         downloadAndroid: 'Android için İndir'
       },
       footer: {
-        copyright: '© 2025 Şarjet.'
+        copyright: '© 2025 Şarjet'
       }
     }
   };
@@ -242,42 +279,73 @@ export default function Home() {
   return (
     <div className={`${isDarkMode ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'} min-h-screen transition-colors duration-300`}>
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full ${isDarkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'} backdrop-blur-md z-50 border-b transition-colors duration-300`}>
+      <nav className={`fixed top-0 w-full ${isScrolled ? (isDarkMode ? 'bg-slate-900/95 border-slate-800' : 'bg-white/95 border-slate-200') : 'bg-transparent'} backdrop-blur-md z-50 transition-all duration-300 ${isScrolled ? 'border-b' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
             <motion.div 
               className="flex items-center space-x-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Zap className="h-8 w-8 text-[#00b4d8]" />
-              <span className="text-xl font-bold">Şarjet</span>
-            </motion.div>
-            <motion.div 
-              className="flex items-center space-x-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="hidden md:flex space-x-8">
-                <a href="#features" className="hover:text-[#00b4d8] transition-colors">{t.nav.features}</a>
-                <a href="#how-it-works" className="hover:text-[#00b4d8] transition-colors">{t.nav.howItWorks}</a>
-                <a href="#about" className="hover:text-[#00b4d8] transition-colors">{t.nav.about}</a>
-                <a href="#developer" className="hover:text-[#00b4d8] transition-colors">{t.nav.developer}</a>
-                <a href="#faq" className="hover:text-[#00b4d8] transition-colors">{t.nav.faq}</a>
+              <div className="bg-gradient-to-r from-[#0055A5] to-[#00b4d8] p-2 rounded-xl">
+                <Zap className="h-8 w-8 text-white" />
               </div>
-              
-              {/* Theme Toggle Button */}
+              <span className="text-2xl font-bold bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">Şarjet</span>
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              <a 
+                href="#features" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                {t.nav.features}
+              </a>
+              <a 
+                href="#how-it-works" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                {t.nav.howItWorks}
+              </a>
+              <a 
+                href="#about" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                {t.nav.about}
+              </a>
+              <a 
+                href="#developer" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('developer'); }}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                {t.nav.developer}
+              </a>
+              <a 
+                href="#faq" 
+                onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                {t.nav.faq}
+              </a>
+            </div>
+
+            {/* Right side controls */}
+            <div className="flex items-center space-x-4">
+              {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className={`p-2 rounded-lg ${isDarkMode ? 'bg-slate-800 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} transition-colors`}
+                className={`p-2 rounded-xl ${isDarkMode ? 'bg-slate-800 hover:bg-slate-700' : 'bg-slate-100 hover:bg-slate-200'} transition-colors`}
                 aria-label="Toggle theme"
               >
                 {isDarkMode ? (
-                  <Sun className="h-5 w-5 text-[#00b4d8]" />
+                  <Sun className="h-5 w-5 text-[#f97316]" />
                 ) : (
-                  <Moon className="h-5 w-5 text-[#00b4d8]" />
+                  <Moon className="h-5 w-5 text-[#0055A5]" />
                 )}
               </button>
               
@@ -285,7 +353,7 @@ export default function Home() {
               <div className="relative language-dropdown">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg border ${isDarkMode ? 'border-slate-700 hover:border-[#00b4d8]' : 'border-slate-300 hover:border-[#00b4d8]'} transition-colors`}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border ${isDarkMode ? 'border-slate-700 hover:border-[#0055A5] bg-slate-800' : 'border-slate-300 hover:border-[#0055A5] bg-slate-50'} transition-colors`}
                 >
                   <ReactCountryFlag 
                     countryCode={languages.find(lang => lang.code === selectedLanguage)?.flag || 'US'} 
@@ -303,7 +371,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className={`absolute right-0 mt-2 w-40 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-lg shadow-xl z-50 transition-colors duration-300`}
+                    className={`absolute right-0 mt-2 w-40 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-xl shadow-xl z-50`}
                   >
                     {languages.map((language) => (
                       <button
@@ -312,211 +380,376 @@ export default function Home() {
                           setSelectedLanguage(language.code);
                           setIsDropdownOpen(false);
                         }}
-                        className={`w-full flex items-center space-x-3 px-4 py-3 text-left ${isDarkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-100'} transition-colors first:rounded-t-lg last:rounded-b-lg`}
+                        className={`flex items-center space-x-3 w-full px-4 py-3 text-sm hover:bg-[#0055A5]/10 transition-colors first:rounded-t-xl last:rounded-b-xl ${
+                          selectedLanguage === language.code ? (isDarkMode ? 'bg-[#0055A5]/20' : 'bg-[#0055A5]/10') : ''
+                        }`}
                       >
                         <ReactCountryFlag 
                           countryCode={language.flag} 
                           svg 
                           style={{ width: '20px', height: '15px' }} 
                         />
-                        <span className="text-sm">{language.name}</span>
+                        <span>{language.name}</span>
                       </button>
                     ))}
                   </motion.div>
                 )}
               </div>
-            </motion.div>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={toggleMobileMenu}
+                className="lg:hidden p-2 rounded-xl hover:bg-slate-700/50 transition-colors"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className={`lg:hidden border-t ${isDarkMode ? 'border-slate-700' : 'border-slate-200'} py-4`}
+            >
+              <div className="flex flex-col space-y-4">
+                <a 
+                  href="#features" 
+                  onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
+                  className="font-medium hover:text-[#0055A5] transition-colors"
+                >
+                  {t.nav.features}
+                </a>
+                <a 
+                  href="#how-it-works" 
+                  onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
+                  className="font-medium hover:text-[#0055A5] transition-colors"
+                >
+                  {t.nav.howItWorks}
+                </a>
+                <a 
+                  href="#about" 
+                  onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
+                  className="font-medium hover:text-[#0055A5] transition-colors"
+                >
+                  {t.nav.about}
+                </a>
+                <a 
+                  href="#developer" 
+                  onClick={(e) => { e.preventDefault(); scrollToSection('developer'); }}
+                  className="font-medium hover:text-[#0055A5] transition-colors"
+                >
+                  {t.nav.developer}
+                </a>
+                <a 
+                  href="#faq" 
+                  onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }}
+                  className="font-medium hover:text-[#0055A5] transition-colors"
+                >
+                  {t.nav.faq}
+                </a>
+              </div>
+            </motion.div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center"
-            variants={stagger}
-            initial="initial"
-            animate="animate"
+      <section 
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(135deg, ${isDarkMode ? 'rgba(15, 23, 42, 0.95)' : 'rgba(248, 250, 252, 0.95)'} 0%, ${isDarkMode ? 'rgba(30, 41, 59, 0.85)' : 'rgba(226, 232, 240, 0.85)'} 100%), url('/hero-bg-modern.svg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${isDarkMode ? 'ffffff' : '000000'}' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
           >
-            <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#00b4d8] to-[#0077b6] bg-clip-text text-transparent"
-              variants={fadeInUp}
-            >
-              {t.hero.title.split('\n').map((line, index) => (
-                <span key={index}>
-                  {line}
-                  {index === 0 && <br />}
-                </span>
-              ))}
-            </motion.h1>
-            <motion.p 
-              className={`text-xl md:text-2xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-8 max-w-3xl mx-auto transition-colors duration-300`}
-              variants={fadeInUp}
-            >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-[#0055A5] via-[#00b4d8] to-[#f97316] bg-clip-text text-transparent">
+                {t.hero.title.split('\n')[0]}
+              </span>
+              <br />
+              <span className={`${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                {t.hero.title.split('\n')[1]}
+              </span>
+            </h1>
+            <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
               {t.hero.subtitle}
-            </motion.p>
-            <motion.div 
-              className="flex justify-center mb-12"
-              variants={fadeInUp}
+            </p>
+            
+            <motion.button
+              className="group bg-gradient-to-r from-[#0055A5] to-[#00b4d8] hover:from-[#00b4d8] hover:to-[#f97316] text-white px-12 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center space-x-3 mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-6 py-3 rounded-xl hover:bg-[#03045e] transition-colors">
-                <Play className="h-5 w-5" />
-                <span>{t.hero.downloadAndroid}</span>
-              </button>
+              <Download className="h-6 w-6" />
+              <span>{t.hero.downloadAndroid}</span>
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </motion.div>
+
+          {/* Hero Image/Animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className={`w-80 h-80 mx-auto rounded-full bg-gradient-to-r from-[#0055A5]/20 to-[#00b4d8]/20 flex items-center justify-center ${isDarkMode ? 'shadow-2xl shadow-[#0055A5]/20' : 'shadow-2xl shadow-slate-500/20'}`}>
+              <Zap className="h-32 w-32 text-[#00b4d8]" />
+            </div>
+            {/* Floating elements */}
+            <motion.div
+              animate={{ 
+                y: [0, -20, 0],
+                rotate: [0, 5, 0]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute -top-10 -right-10 bg-[#f97316] p-4 rounded-2xl shadow-lg"
+            >
+              <MapPin className="h-8 w-8 text-white" />
             </motion.div>
-            <motion.div 
-              className="relative"
-              variants={fadeInUp}
+            <motion.div
+              animate={{ 
+                y: [0, 20, 0],
+                rotate: [0, -5, 0]
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+              className="absolute -bottom-10 -left-10 bg-[#0055A5] p-4 rounded-2xl shadow-lg"
             >
-              <div className="w-64 h-64 mx-auto bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-full flex items-center justify-center">
-                <Smartphone className="h-32 w-32 text-[#00b4d8]" />
-              </div>
+              <Battery className="h-8 w-8 text-white" />
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="cursor-pointer"
+            onClick={() => scrollToSection('features')}
+          >
+            <ChevronDown className="h-8 w-8 text-[#0055A5]" />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.features.title}</h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.features.subtitle}</p>
-          </motion.div>
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <MapPin className="h-12 w-12 text-[#00b4d8] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.features.realTime.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.realTime.description}</p>
-            </motion.div>
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <Clock className="h-12 w-12 text-[#00b4d8] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.features.availability.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.availability.description}</p>
-            </motion.div>
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-8 rounded-2xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <Filter className="h-12 w-12 text-[#00b4d8] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.features.filtering.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.features.filtering.description}</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.howItWorks.title}</h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.subtitle}</p>
-          </motion.div>
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold">1</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step1.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step1.description}</p>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold">2</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step2.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step2.description}</p>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              variants={fadeInUp}
-            >
-              <div className="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold">3</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">{t.howItWorks.step3.title}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} transition-colors duration-300`}>{t.howItWorks.step3.description}</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* App Screenshots */}
-      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
-        <div className="max-w-7xl mx-auto text-center">
+      <section 
+        id="features"
+        ref={featuresRef}
+        className={`py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={featuresInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-16">{t.screenshots.title}</h2>
-            <div className="flex justify-center space-x-8">
-              <div className="w-64 h-96 bg-gradient-to-br from-[#00b4d8]/20 to-[#0077b6]/20 rounded-3xl flex items-center justify-center">
-                <Smartphone className="h-48 w-48 text-[#00b4d8]/50" />
-              </div>
-              <div className="w-64 h-96 bg-gradient-to-br from-[#0077b6]/20 to-[#00b4d8]/20 rounded-3xl flex items-center justify-center">
-                <MapPin className="h-48 w-48 text-[#0077b6]/50" />
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
+              {t.features.title}
+            </h2>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-2xl mx-auto`}>
+              {t.features.subtitle}
+            </p>
           </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="initial"
+            animate={featuresInView ? "animate" : "initial"}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                icon: MapPin,
+                title: t.features.realTime.title,
+                description: t.features.realTime.description,
+                color: 'from-[#0055A5] to-[#00b4d8]'
+              },
+              {
+                icon: Clock,
+                title: t.features.availability.title,
+                description: t.features.availability.description,
+                color: 'from-[#00b4d8] to-[#f97316]'
+              },
+              {
+                icon: Filter,
+                title: t.features.filtering.title,
+                description: t.features.filtering.description,
+                color: 'from-[#f97316] to-[#0055A5]'
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className={`group ${isDarkMode ? 'bg-slate-900 hover:bg-slate-900/80' : 'bg-white hover:bg-slate-50'} p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border ${isDarkMode ? 'border-slate-700 hover:border-[#0055A5]' : 'border-slate-200 hover:border-[#0055A5]'}`}
+              >
+                <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section 
+        id="how-it-works"
+        ref={howItWorksRef}
+        className={`py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={howItWorksInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
+              {t.howItWorks.title}
+            </h2>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-2xl mx-auto`}>
+              {t.howItWorks.subtitle}
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#0055A5] to-[#f97316] rounded-full"></div>
+            
+            <motion.div
+              variants={stagger}
+              initial="initial"
+              animate={howItWorksInView ? "animate" : "initial"}
+              className="space-y-16"
+            >
+              {[
+                {
+                  number: '01',
+                  icon: Search,
+                  title: t.howItWorks.step1.title,
+                  description: t.howItWorks.step1.description,
+                  side: 'left'
+                },
+                {
+                  number: '02',
+                  icon: Navigation,
+                  title: t.howItWorks.step2.title,
+                  description: t.howItWorks.step2.description,
+                  side: 'right'
+                },
+                {
+                  number: '03',
+                  icon: Zap,
+                  title: t.howItWorks.step3.title,
+                  description: t.howItWorks.step3.description,
+                  side: 'left'
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className={`flex flex-col md:flex-row items-center ${step.side === 'right' ? 'md:flex-row-reverse' : ''}`}
+                >
+                  <div className={`md:w-1/2 ${step.side === 'right' ? 'md:pl-16' : 'md:pr-16'} mb-8 md:mb-0`}>
+                    <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} p-8 rounded-3xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+                      <div className="flex items-center mb-4">
+                        <div className={`w-12 h-12 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-bold text-lg mr-4`}>
+                          {step.number}
+                        </div>
+                        <div className={`w-12 h-12 bg-gradient-to-r from-[#00b4d8] to-[#f97316] rounded-2xl flex items-center justify-center`}>
+                          <step.icon className="h-6 w-6 text-white" />
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                      <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline dot */}
+                  <div className="hidden md:block relative z-10">
+                    <div className={`w-6 h-6 bg-gradient-to-r from-[#0055A5] to-[#f97316] rounded-full border-4 ${isDarkMode ? 'border-slate-900' : 'border-white'}`}></div>
+                  </div>
+                  
+                  <div className="md:w-1/2"></div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      <section 
+        id="about"
+        ref={aboutRef}
+        className={`py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">{t.about.title}</h2>
-            <div className="max-w-4xl mx-auto">
-              <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-6 transition-colors duration-300`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
+              {t.about.title}
+            </h2>
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className={`text-lg md:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
                 {t.about.description1}
               </p>
-              <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
+              <p className={`text-lg md:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
                 {t.about.description2}
               </p>
             </div>
@@ -525,156 +758,188 @@ export default function Home() {
       </section>
 
       {/* Developer Section */}
-      <section id="developer" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center justify-center mb-6">
-              <User className="h-12 w-12 text-[#00b4d8] mr-4" />
-              <h2 className="text-4xl md:text-5xl font-bold text-white">{t.developer.title}</h2>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              {t.developer.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-6 text-center leading-relaxed transition-colors duration-300`}>
-                  {paragraph}
-                </p>
-              ))}
-              <div className={`mt-8 p-6 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} rounded-xl border transition-colors duration-300`}>
-                <p className="text-center text-[#00b4d8] font-medium mb-6">
-                  {t.developer.socialContact}
-                </p>
-                <div className="flex justify-center space-x-6">
-                  <a 
-                    href="https://github.com/ysftsdln0" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
-                  >
-                    <Github className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/yusuf-efe-tasdelen/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
-                  >
-                    <Linkedin className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
-                  </a>
-                  <a 
-                    href="https://x.com/ysftsdln" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
-                  >
-                    <Twitter className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
-                  </a>
-                  <a 
-                    href="mailto:efe@tasdelen.net"
-                    className={`flex items-center justify-center w-12 h-12 ${isDarkMode ? 'bg-slate-700 hover:bg-[#00b4d8]/20' : 'bg-slate-100 hover:bg-[#00b4d8]/10'} rounded-lg transition-colors group`}
-                  >
-                    <Mail className={`h-6 w-6 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} group-hover:text-[#00b4d8] transition-colors`} />
-                  </a>
+      <section 
+        id="developer"
+        className={`py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
+                {t.developer.title}
+              </h2>
+              
+              <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} p-8 md:p-12 rounded-3xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+                <div className="flex items-center justify-center mb-8">
+                  <div className="w-24 h-24 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] rounded-full flex items-center justify-center">
+                    <User className="h-12 w-12 text-white" />
+                  </div>
+                </div>
+                <div className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed mb-8 whitespace-pre-line text-left`}>
+                  {t.developer.content}
+                </div>
+                
+                <div className={`border-t ${isDarkMode ? 'border-slate-700' : 'border-slate-300'} pt-8`}>
+                  <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} mb-4 font-medium`}>
+                    {t.developer.socialContact}
+                  </p>
+                  <div className="flex justify-center space-x-6">
+                    <a href="mailto:yusufefe@sarjet.com" className="group">
+                      <div className={`p-3 rounded-xl ${isDarkMode ? 'bg-slate-700 hover:bg-[#0055A5]' : 'bg-slate-200 hover:bg-[#0055A5]'} transition-colors`}>
+                        <Mail className="h-6 w-6 group-hover:text-white" />
+                      </div>
+                    </a>
+                    <a href="https://github.com/ysftsdln0" target="_blank" rel="noopener noreferrer" className="group">
+                      <div className={`p-3 rounded-xl ${isDarkMode ? 'bg-slate-700 hover:bg-[#0055A5]' : 'bg-slate-200 hover:bg-[#0055A5]'} transition-colors`}>
+                        <Github className="h-6 w-6 group-hover:text-white" />
+                      </div>
+                    </a>
+                    <a href="#" className="group">
+                      <div className={`p-3 rounded-xl ${isDarkMode ? 'bg-slate-700 hover:bg-[#0055A5]' : 'bg-slate-200 hover:bg-[#0055A5]'} transition-colors`}>
+                        <Linkedin className="h-6 w-6 group-hover:text-white" />
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-slate-800/50' : 'bg-slate-50'} transition-colors duration-300`}>
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      <section 
+        id="faq"
+        className={`py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.faq.title}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
+              {t.faq.title}
+            </h2>
           </motion.div>
-          <motion.div 
-            className="space-y-6"
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <h3 className="text-lg font-semibold mb-2">{t.faq.q1.question}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q1.answer}</p>
-            </motion.div>
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <h3 className="text-lg font-semibold mb-2">{t.faq.q2.question}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q2.answer}</p>
-            </motion.div>
-            <motion.div 
-              className={`${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl border transition-colors duration-300`}
-              variants={fadeInUp}
-            >
-              <h3 className="text-lg font-semibold mb-2">{t.faq.q3.question}</h3>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>{t.faq.q3.answer}</p>
-            </motion.div>
-          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              { q: t.faq.q1.question, a: t.faq.q1.answer },
+              { q: t.faq.q2.question, a: t.faq.q2.answer },
+              { q: t.faq.q3.question, a: t.faq.q3.answer }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`${isDarkMode ? 'bg-slate-900' : 'bg-white'} p-6 md:p-8 rounded-2xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'} hover:border-[#0055A5] transition-colors`}
+              >
+                <h3 className="text-xl font-semibold mb-3">{faq.q}</h3>
+                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+                  {faq.a}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className={`py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">{t.cta.title}</h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-8 transition-colors duration-300`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#0055A5] to-[#f97316] bg-clip-text text-transparent">
+              {t.cta.title}
+            </h2>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-10 max-w-2xl mx-auto`}>
               {t.cta.subtitle}
             </p>
-            <div className="flex justify-center">
-              <button className="flex items-center justify-center space-x-2 bg-[#0077b6] text-white px-8 py-4 rounded-xl hover:bg-[#03045e] transition-colors">
-                <Play className="h-6 w-6" />
-                <span>{t.cta.downloadAndroid}</span>
-              </button>
-            </div>
+            
+            <motion.button
+              className="group bg-gradient-to-r from-[#0055A5] to-[#00b4d8] hover:from-[#00b4d8] hover:to-[#f97316] text-white px-12 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center space-x-3 mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Download className="h-6 w-6" />
+              <span>{t.cta.downloadAndroid}</span>
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className={`${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-slate-100 border-slate-200'} border-t py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Zap className="h-8 w-8 text-[#00b4d8]" />
-              <span className="text-xl font-bold">Şarjet</span>
+      <footer className={`${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-slate-100 border-slate-200'} border-t py-16 transition-colors duration-300`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            {/* Brand */}
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="bg-gradient-to-r from-[#0055A5] to-[#00b4d8] p-2 rounded-xl">
+                  <Zap className="h-8 w-8 text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">Şarjet</span>
+              </div>
+              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-md leading-relaxed`}>
+                {selectedLanguage === 'EN' 
+                  ? 'Making electric vehicle charging simple and accessible for everyone. Power your journey with confidence.'
+                  : 'Elektrikli araç şarjını herkes için basit ve erişilebilir hale getiriyoruz. Yolculuğunuza güvenle güç katın.'
+                }
+              </p>
             </div>
-            <div className="flex space-x-6">
-              <a href="mailto:contact@sarjet.com" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
-                <Mail className="h-6 w-6" />
-              </a>
-              <a href="#" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
-                <Github className="h-6 w-6" />
-              </a>
-              <a href="#" className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} hover:text-[#00b4d8] transition-colors`}>
-                <Twitter className="h-6 w-6" />
-              </a>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">
+                {selectedLanguage === 'EN' ? 'Contact' : 'İletişim'}
+              </h4>
+              <div className="space-y-3">
+                <a href="mailto:contact@sarjet.com" className={`${isDarkMode ? 'text-slate-300 hover:text-[#00b4d8]' : 'text-slate-600 hover:text-[#0055A5]'} transition-colors flex items-center`}>
+                  <Mail className="h-4 w-4 mr-2" />
+                  contact@sarjet.com
+                </a>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">
+                {selectedLanguage === 'EN' ? 'Follow Us' : 'Bizi Takip Edin'}
+              </h4>
+              <div className="flex space-x-4">
+                <a href="https://github.com/ysftsdln0/sarjet-web" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-slate-400 hover:text-[#00b4d8]' : 'text-slate-500 hover:text-[#0055A5]'} transition-colors`}>
+                  <Github className="h-6 w-6" />
+                </a>
+                <a href="#" className={`${isDarkMode ? 'text-slate-400 hover:text-[#00b4d8]' : 'text-slate-500 hover:text-[#0055A5]'} transition-colors`}>
+                  <Twitter className="h-6 w-6" />
+                </a>
+                <a href="#" className={`${isDarkMode ? 'text-slate-400 hover:text-[#00b4d8]' : 'text-slate-500 hover:text-[#0055A5]'} transition-colors`}>
+                  <Linkedin className="h-6 w-6" />
+                </a>
+              </div>
             </div>
           </div>
-          <div className={`mt-8 pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} text-center ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
+
+          <div className={`pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} text-center ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
             <p>{t.footer.copyright}</p>
+            <p className="mt-2 text-sm">
+              {selectedLanguage === 'EN' 
+                ? 'Made with ❤️ for a sustainable future'
+                : 'Sürdürülebilir bir gelecek için ❤️ ile yapıldı'
+              }
+            </p>
           </div>
         </div>
       </footer>
