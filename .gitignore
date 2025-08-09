@@ -59,3 +59,4 @@ logs
 *-backup.ts
 *-backup.js
 page-backup.tsx
+.env
