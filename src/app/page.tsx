@@ -89,51 +89,51 @@ export default function Home() {
       },
       hero: {
         title: 'Find EV Charging\nStations Instantly',
-        subtitle: 'Discover nearby charging stations, check real-time availability, and power up your electric vehicle journey across Istanbul.',
+        subtitle: 'Discover nearby charging stations across Turkey with real-time data from OpenChargeMap. Built for electric vehicle owners to make charging station discovery simple and efficient nationwide.',
         downloadAndroid: 'Download for Android',
         watchDemo: 'Watch demo',
-        announcement: 'New: Android early access is live'
+        announcement: 'New: React Native app covering all of Turkey'
       },
       features: {
         title: 'Powerful Features',
         subtitle: 'Everything you need for seamless EV charging',
         realTime: {
           title: 'Real-time Location',
-          description: 'Find charging stations near you with precise GPS integration and live updates.'
+          description: 'Find charging stations near you with precise GPS integration using OpenChargeMap API data.'
         },
         availability: {
-          title: 'Live Availability',
-          description: 'Check real-time charging port availability before you arrive.'
+          title: 'Smart Filtering',
+          description: 'Filter by connector type, charging speed, distance, and availability to find the perfect station.'
         },
         filtering: {
-          title: 'Smart Filtering',
-          description: 'Filter by connector type, charging speed, and distance to find the perfect station.'
+          title: 'Map & List View',
+          description: 'Switch between interactive map view and detailed list view to explore charging stations.'
         }
       },
       howItWorks: {
         title: 'How Şarjet Works',
-        subtitle: 'Three simple steps to power up your journey',
+        subtitle: 'Three simple steps to find your charging station',
         step1: {
-          title: 'Open & Search',
-          description: 'Open Şarjet and let us find charging stations around your location.'
+          title: 'Open & Discover',
+          description: 'Open Şarjet and let us find charging stations around your location using GPS and OpenChargeMap data.'
         },
         step2: {
-          title: 'Choose & Navigate',
-          description: 'Select the best station based on availability, distance, and your preferences.'
+          title: 'Filter & Choose',
+          description: 'Use our smart filters to find stations by connector type, charging speed, distance, and switch between map or list view.'
         },
         step3: {
-          title: 'Charge & Go',
-          description: 'Arrive at your chosen station and start charging with confidence.'
+          title: 'Navigate & Charge',
+          description: 'Get detailed station information including power specs, operator details, and navigate directly to your chosen station.'
         }
       },
       about: {
         title: 'About Şarjet',
-        description1: 'Şarjet is born from the vision of making electric vehicle adoption seamless and accessible for everyone in Turkey. Starting in Istanbul and expanding nationwide, we\'re building the future of sustainable transportation.',
-        description2: 'Our mission is to eliminate range anxiety and make EV charging as simple as finding the nearest gas station. With real-time data from OpenChargeMap and intuitive design, we\'re powering the electric revolution one charge at a time.'
+        description1: 'Şarjet is a mobile application that helps electric vehicle owners easily find nearby charging stations on a map across all of Turkey. Built from scratch to solve the challenge of locating EV charging infrastructure nationwide.',
+        description2: 'Now covering the entire country, Şarjet pulls real-time data from the OpenChargeMap API and lists the most suitable stations based on user location. Our goal is to make EV charging station discovery as simple as finding the nearest gas station, wherever you are in Turkey.'
       },
       developer: {
         title: 'About the Developer',
-        content: 'Hello! I\'m Yusuf Efe Taşdelen, a 19-year-old university student. In this era where electric vehicles are becoming widespread, I noticed that finding charging stations is still not easy enough for users. To solve this need, I developed Şarjet from scratch - a mobile application that allows electric vehicle owners to easily find nearby charging stations on a map.\n\nIn this project that I developed alone, real-time data is pulled from the OpenChargeMap API and the most suitable stations are listed according to users\' locations. Although it currently focuses on Istanbul, my goal is to make Şarjet usable throughout Turkey.\n\nAs a university student, I continue to work on taking this project I developed with limited resources even further and continuously improving the user experience. Your opinions and feedback are very valuable to me!',
+        content: 'Hello! I\'m Yusuf Efe Taşdelen, a 19-year-old university student. In this era where electric vehicles are becoming widespread, I noticed that finding charging stations is still not easy enough for users. To solve this need, I developed Şarjet from scratch - a mobile application that allows electric vehicle owners to easily find nearby charging stations on a map.\n\nIn this project that I developed alone, real-time data is pulled from the OpenChargeMap API and the most suitable stations are listed according to users\' locations. Şarjet now covers all of Turkey, making it easy to find charging stations anywhere in the country.\n\nAs a university student, I continue to work on taking this project I developed with limited resources even further and continuously improving the user experience. Your opinions and feedback are very valuable to me!\n\nThe app is built with React Native and Expo, featuring a modern UI with both map and list views, smart filtering options, and real-time charging station data across Turkey.',
         socialContact: 'Connect with me:'
       },
       faq: {
@@ -144,11 +144,11 @@ export default function Home() {
         },
         q2: {
           question: 'Which cities are supported?',
-          answer: 'Currently, we support Istanbul with comprehensive coverage. We\'re expanding to other Turkish cities soon.'
+          answer: 'Şarjet now supports all cities across Turkey! Find charging stations from Istanbul to Ankara, İzmir to Antalya, and everywhere in between.'
         },
         q3: {
-          question: 'How accurate is the real-time data?',
-          answer: 'We integrate with OpenChargeMap API to provide the most up-to-date information available for each charging station.'
+          question: 'How accurate is the data?',
+          answer: 'We integrate with OpenChargeMap API to provide the most up-to-date information available. The app shows up to 100 nearby stations with detailed information including power, connector types, and operator details.'
         }
       },
       cta: {
@@ -173,51 +173,51 @@ export default function Home() {
       },
       hero: {
         title: 'EV Şarj İstasyonlarını\nAnında Bulun',
-        subtitle: 'Yakınınızdaki şarj istasyonlarını keşfedin, gerçek zamanlı müsaitlik durumunu kontrol edin ve İstanbul\'daki elektrikli araç yolculuğunuza güç katın.',
+        subtitle: 'OpenChargeMap\'ten gerçek zamanlı verilerle Türkiye genelindeki şarj istasyonlarını keşfedin. Elektrikli araç sahipleri için ülke çapında şarj istasyonu keşfini basit ve verimli hale getirmek için geliştirildi.',
         downloadAndroid: 'Android için İndir',
         watchDemo: 'Demoyu izle',
-        announcement: 'Yeni: Android erken erişim yayında'
+        announcement: 'Yeni: Tüm Türkiye\'yi kapsayan React Native uygulaması'
       },
       features: {
         title: 'Güçlü Özellikler',
         subtitle: 'Sorunsuz EV şarjı için ihtiyacınız olan her şey',
         realTime: {
           title: 'Gerçek Zamanlı Konum',
-          description: 'Hassas GPS entegrasyonu ve canlı güncellemelerle yakınınızdaki şarj istasyonlarını bulun.'
+          description: 'OpenChargeMap API verilerini kullanarak hassas GPS entegrasyonu ile yakınınızdaki şarj istasyonlarını bulun.'
         },
         availability: {
-          title: 'Canlı Müsaitlik',
-          description: 'Varmadan önce gerçek zamanlı şarj portu müsaitlik durumunu kontrol edin.'
+          title: 'Akıllı Filtreleme',
+          description: 'Konnektör tipine, şarj hızına, mesafeye ve müsaitlik durumuna göre filtreleyerek mükemmel istasyonu bulun.'
         },
         filtering: {
-          title: 'Akıllı Filtreleme',
-          description: 'Konnektör tipine, şarj hızına ve mesafeye göre filtreleyerek mükemmel istasyonu bulun.'
+          title: 'Harita & Liste Görünümü',
+          description: 'İnteraktif harita görünümü ve detaylı liste görünümü arasında geçiş yaparak şarj istasyonlarını keşfedin.'
         }
       },
       howItWorks: {
         title: 'Şarjet Nasıl Çalışır',
-        subtitle: 'Yolculuğunuza güç katmak için üç basit adım',
+        subtitle: 'Şarj istasyonunuzu bulmak için üç basit adım',
         step1: {
-          title: 'Aç & Ara',
-          description: 'Şarjet\'i açın ve konumunuzun etrafındaki şarj istasyonlarını bulmamıza izin verin.'
+          title: 'Aç & Keşfet',
+          description: 'Şarjet\'i açın ve GPS ve OpenChargeMap verilerini kullanarak konumunuzun etrafındaki şarj istasyonlarını bulmamıza izin verin.'
         },
         step2: {
-          title: 'Seç & Yönlen',
-          description: 'Müsaitlik, mesafe ve tercihlerinize göre en iyi istasyonu seçin.'
+          title: 'Filtrele & Seç',
+          description: 'Konnektör tipi, şarj hızı, mesafeye göre akıllı filtrelerimizi kullanın ve harita veya liste görünümü arasında geçiş yapın.'
         },
         step3: {
-          title: 'Şarj Et & Git',
-          description: 'Seçtiğiniz istasyona varın ve güvenle şarj etmeye başlayın.'
+          title: 'Yönlen & Şarj Et',
+          description: 'Güç özellikleri, operatör detayları dahil detaylı istasyon bilgilerini alın ve seçtiğiniz istasyona doğrudan yön bulun.'
         }
       },
       about: {
         title: 'Şarjet Hakkında',
-        description1: 'Şarjet, Türkiye\'deki herkes için elektrikli araç kullanımını sorunsuz ve erişilebilir hale getirme vizyonundan doğmuştur. İstanbul\'da başlayıp ülke geneline yayılarak, sürdürülebilir ulaşımın geleceğini inşa ediyoruz.',
-        description2: 'Misyonumuz menzil kaygısını ortadan kaldırmak ve EV şarjını en yakın benzin istasyonunu bulmak kadar basit hale getirmektir. OpenChargeMap\'ten gerçek zamanlı veri ve sezgisel tasarımla, elektrikli devrimi her seferinde bir şarjla güçlendiriyoruz.'
+        description1: 'Şarjet, elektrikli araç sahiplerinin Türkiye genelinde yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır. Ülke çapında EV şarj altyapısını bulmaktaki zorluğu çözmek için sıfırdan geliştirilmiştir.',
+        description2: 'Artık tüm ülkeyi kapsayan Şarjet, OpenChargeMap API\'sinden gerçek zamanlı veri çekerek, kullanıcı konumuna göre en uygun istasyonları listelenmektedir. Amacımız Türkiye\'nin her yerinde EV şarj istasyonu keşfetmeyi en yakın benzin istasyonunu bulmak kadar kolay hale getirmektir.'
       },
       developer: {
         title: 'Geliştirici Hakkında',
-        content: 'Merhaba! Ben Yusuf Efe Taşdelen, 19 yaşında bir üniversite öğrencisiyim. Elektrikli araçların yaygınlaştığı bu dönemde, şarj istasyonlarını bulmanın kullanıcılar için hâlâ yeterince kolay olmadığını fark ettim. Bu ihtiyacı çözmek için sıfırdan geliştirdiğim Şarjet, elektrikli araç sahiplerinin yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır.\n\nTek başıma geliştirdiğim bu projede, OpenChargeMap API\'sinden gerçek zamanlı veriler çekiliyor ve kullanıcıların konumlarına göre en uygun istasyonlar listeleniyor. Şu an İstanbul odaklı çalışsa da, hedefim Şarjet\'i Türkiye genelinde kullanılabilir hale getirmek.\n\nÜniversite öğrencisi olarak sınırlı kaynaklarla geliştirdiğim bu projeyi daha da ileri taşımak ve kullanıcı deneyimini sürekli iyileştirmek için çalışıyorum. Görüşleriniz ve geri bildirimleriniz benim için çok değerli!',
+        content: 'Merhaba! Ben Yusuf Efe Taşdelen, 19 yaşında bir üniversite öğrencisiyim. Elektrikli araçların yaygınlaştığı bu dönemde, şarj istasyonlarını bulmanın kullanıcılar için hâlâ yeterince kolay olmadığını fark ettim. Bu ihtiyacı çözmek için sıfırdan geliştirdiğim Şarjet, elektrikli araç sahiplerinin yakındaki şarj istasyonlarını harita üzerinden kolayca bulmalarını sağlayan bir mobil uygulamadır.\n\nTek başıma geliştirdiğim bu projede, OpenChargeMap API\'sinden gerçek zamanlı veriler çekiliyor ve kullanıcıların konumlarına göre en uygun istasyonlar listeleniyor. Şarjet artık tüm Türkiye\'yi kapsıyor ve ülkenin her yerinde şarj istasyonu bulmayı kolaylaştırıyor.\n\nÜniversite öğrencisi olarak sınırlı kaynaklarla geliştirdiğim bu projeyi daha da ileri taşımak ve kullanıcı deneyimini sürekli iyileştirmek için çalışıyorum. Görüşleriniz ve geri bildirimleriniz benim için çok değerli!\n\nUygulama React Native ve Expo ile geliştirilmiş olup, harita ve liste görünümü, akıllı filtreleme seçenekleri ve Türkiye genelinde gerçek zamanlı şarj istasyonu verileri gibi modern özellikler sunmaktadır.',
         socialContact: 'Benimle iletişime geçin:'
       },
       faq: {
@@ -228,11 +228,11 @@ export default function Home() {
         },
         q2: {
           question: 'Hangi şehirler destekleniyor?',
-          answer: 'Şu anda İstanbul\'u kapsamlı bir şekilde destekliyoruz. Yakında diğer Türk şehirlerine de genişliyoruz.'
+          answer: 'Şarjet artık Türkiye\'nin tüm şehirlerini destekliyor! İstanbul\'dan Ankara\'ya, İzmir\'den Antalya\'ya ve aralarındaki her yerde şarj istasyonları bulabilirsiniz.'
         },
         q3: {
-          question: 'Gerçek zamanlı veriler ne kadar doğru?',
-          answer: 'Her şarj istasyonu için mevcut en güncel bilgileri sağlamak üzere OpenChargeMap API\'si ile entegre oluyoruz.'
+          question: 'Veriler ne kadar doğru?',
+          answer: 'En güncel bilgileri sağlamak için OpenChargeMap API\'si ile entegre oluyoruz. Uygulama, güç, konnektör tipleri ve operatör detayları da dahil olmak üzere detaylı bilgilerle birlikte yakın çevredeki 100 istasyona kadar göstermektedir.'
         }
       },
       cta: {
@@ -289,7 +289,7 @@ export default function Home() {
   return (
     <div className={`${isDarkMode ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'} min-h-screen transition-colors duration-300`}>
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full ${isScrolled ? (isDarkMode ? 'bg-slate-900/95 border-slate-800' : 'bg-white/95 border-slate-200') : 'bg-transparent'} backdrop-blur-md z-50 transition-all duration-300 ${isScrolled ? 'border-b' : ''}`}>
+      <nav className="fixed top-0 w-full bg-transparent backdrop-blur-md z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -310,35 +310,35 @@ export default function Home() {
               <a 
                 href="#features" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
-                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}
               >
                 {t.nav.features}
               </a>
               <a 
                 href="#how-it-works" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}
-                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}
               >
                 {t.nav.howItWorks}
               </a>
               <a 
                 href="#about" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}
               >
                 {t.nav.about}
               </a>
               <a 
                 href="#developer" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('developer'); }}
-                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}
               >
                 {t.nav.developer}
               </a>
               <a 
                 href="#faq" 
                 onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }}
-                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}
+                className={`font-medium hover:text-[#0055A5] transition-colors cursor-pointer ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}
               >
                 {t.nav.faq}
               </a>
@@ -349,7 +349,7 @@ export default function Home() {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className={`p-2 rounded-xl ${isDarkMode ? 'bg-slate-800 hover:bg-slate-700' : 'bg-slate-100 hover:bg-slate-200'} transition-colors`}
+                className={`p-2 rounded-xl ${isDarkMode ? 'bg-white/20 hover:bg-white/25 shadow-md shadow-blue-500/10' : 'bg-slate-100 hover:bg-slate-200 shadow-md shadow-slate-200/50'} backdrop-blur-xl transition-colors`}
                 aria-label="Toggle theme"
               >
                 {isDarkMode ? (
@@ -363,7 +363,7 @@ export default function Home() {
               <div className="relative language-dropdown">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border ${isDarkMode ? 'border-slate-700 hover:border-[#0055A5] bg-slate-800' : 'border-slate-300 hover:border-[#0055A5] bg-slate-50'} transition-colors`}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border ${isDarkMode ? 'border-white/30 hover:border-[#00b4d8]/50 bg-white/20 shadow-md shadow-blue-500/10' : 'border-slate-300 hover:border-[#0055A5] bg-white/80 shadow-md shadow-slate-200/30'} backdrop-blur-xl transition-colors`}
                 >
                   <ReactCountryFlag 
                     countryCode={languages.find(lang => lang.code === selectedLanguage)?.flag || 'US'} 
@@ -381,7 +381,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className={`absolute right-0 mt-2 w-40 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-xl shadow-xl z-50`}
+                    className={`absolute right-0 mt-2 w-40 ${isDarkMode ? 'bg-white/20 border-white/30 shadow-xl shadow-blue-500/20' : 'bg-white/90 border-white/50 shadow-xl shadow-slate-200/50'} backdrop-blur-xl border rounded-xl z-50`}
                   >
                     {languages.map((language) => (
                       <button
@@ -427,7 +427,7 @@ export default function Home() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className={`lg:hidden border-t ${isDarkMode ? 'border-slate-700' : 'border-slate-200'} py-4`}
+              className={`lg:hidden border-t ${isDarkMode ? 'border-white/20' : 'border-white/30'} py-4`}
             >
               <div className="flex flex-col space-y-4">
                 <a 
@@ -471,15 +471,13 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Main Section - Tüm sayfa içeriği */}
       <section 
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className={`relative min-h-screen transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}
         style={{
-          backgroundImage: `linear-gradient(135deg, ${isDarkMode ? 'rgba(15, 23, 42, 0.95)' : 'rgba(248, 250, 252, 0.95)'} 0%, ${isDarkMode ? 'rgba(30, 41, 59, 0.85)' : 'rgba(226, 232, 240, 0.85)'} 100%), url('/hero-bg-modern.svg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          background: isDarkMode 
+            ? '#0f172a' // Sabit koyu mavi renk - gradient yok
+            : '#f8fafc' // Sabit açık gri renk - gradient yok
         }}
       >
         {/* Background Pattern */}
@@ -487,14 +485,67 @@ export default function Home() {
           <div 
             className="absolute inset-0"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${isDarkMode ? 'ffffff' : '000000'}' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${isDarkMode ? 'ffffff' : '1e293b'}' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
         </div>
 
-        {/* Gradient glow orbs */}
-        <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #00b4d8 0%, transparent 60%)' }} />
-        <div className="pointer-events-none absolute -bottom-24 -right-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #f97316 0%, transparent 60%)' }} />
+        {/* Gradient glow orbs - Artırılmış sayıda, fotoğraftaki gibi */}
+        <div className="pointer-events-none absolute top-0 left-0 w-full h-full overflow-hidden">
+          {/* Ana büyük orb'lar */}
+          <div className="absolute -top-60 -left-60 w-[700px] h-[700px] rounded-full blur-3xl opacity-40" style={{ background: isDarkMode ? 'radial-gradient(circle, #00b4d8 0%, rgba(0, 180, 216, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #0055A5 0%, rgba(0, 85, 165, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute -top-20 -right-60 w-[600px] h-[600px] rounded-full blur-3xl opacity-35" style={{ background: isDarkMode ? 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute top-[300px] -left-40 w-[500px] h-[500px] rounded-full blur-3xl opacity-30" style={{ background: isDarkMode ? 'radial-gradient(circle, #0055A5 0%, rgba(0, 85, 165, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #00b4d8 0%, rgba(0, 180, 216, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute bottom-60 right-10 w-[550px] h-[550px] rounded-full blur-3xl opacity-35" style={{ background: isDarkMode ? 'radial-gradient(circle, #00b4d8 0%, rgba(0, 180, 216, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #0055A5 0%, rgba(0, 85, 165, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full blur-3xl opacity-40" style={{ background: isDarkMode ? 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute top-[500px] right-20 w-[300px] h-[300px] rounded-full blur-3xl opacity-25" style={{ background: isDarkMode ? 'radial-gradient(circle, #0055A5 0%, rgba(0, 85, 165, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #00b4d8 0%, rgba(0, 180, 216, 0.3) 30%, transparent 60%)' }} />
+          
+          {/* Orta büyüklükteki ekstra orb'lar */}
+          <div className="absolute top-[200px] left-1/2 w-[400px] h-[400px] rounded-full blur-3xl opacity-20" style={{ background: isDarkMode ? 'radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[600px] -right-30 w-[350px] h-[350px] rounded-full blur-3xl opacity-25" style={{ background: isDarkMode ? 'radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[100px] left-1/4 w-[320px] h-[320px] rounded-full blur-3xl opacity-18" style={{ background: isDarkMode ? 'radial-gradient(circle, #ef4444 0%, rgba(239, 68, 68, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #ef4444 0%, rgba(239, 68, 68, 0.2) 30%, transparent 60%)' }} />
+          
+          {/* Orta seviye orb'lar - sayfa ortasında */}
+          <div className="absolute top-[400px] right-1/4 w-[280px] h-[280px] rounded-full blur-3xl opacity-22" style={{ background: isDarkMode ? 'radial-gradient(circle, #fbbf24 0%, rgba(251, 191, 36, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #fbbf24 0%, rgba(251, 191, 36, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[700px] left-1/3 w-[450px] h-[450px] rounded-full blur-3xl opacity-30" style={{ background: isDarkMode ? 'radial-gradient(circle, #00b4d8 0%, rgba(0, 180, 216, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #0055A5 0%, rgba(0, 85, 165, 0.3) 30%, transparent 60%)' }} />
+          <div className="absolute bottom-20 right-1/3 w-[350px] h-[350px] rounded-full blur-3xl opacity-25" style={{ background: isDarkMode ? 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.4) 30%, transparent 60%)' : 'radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0.3) 30%, transparent 60%)' }} />
+          
+          {/* Küçük orb'lar - detay için */}
+          <div className="absolute top-[150px] right-1/3 w-[200px] h-[200px] rounded-full blur-3xl opacity-15" style={{ background: isDarkMode ? 'radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[350px] left-1/6 w-[250px] h-[250px] rounded-full blur-3xl opacity-18" style={{ background: isDarkMode ? 'radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[550px] left-1/2 w-[180px] h-[180px] rounded-full blur-3xl opacity-20" style={{ background: isDarkMode ? 'radial-gradient(circle, #84cc16 0%, rgba(132, 204, 22, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #84cc16 0%, rgba(132, 204, 22, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute bottom-40 left-1/5 w-[220px] h-[220px] rounded-full blur-3xl opacity-16" style={{ background: isDarkMode ? 'radial-gradient(circle, #f59e0b 0%, rgba(245, 158, 11, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #f59e0b 0%, rgba(245, 158, 11, 0.2) 30%, transparent 60%)' }} />
+          
+          {/* Mini orb'lar - atmosfer için */}
+          <div className="absolute top-[250px] right-1/6 w-[120px] h-[120px] rounded-full blur-3xl opacity-12" style={{ background: isDarkMode ? 'radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[450px] left-1/8 w-[150px] h-[150px] rounded-full blur-3xl opacity-14" style={{ background: isDarkMode ? 'radial-gradient(circle, #f43f5e 0%, rgba(244, 63, 94, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #f43f5e 0%, rgba(244, 63, 94, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute bottom-60 right-1/5 w-[160px] h-[160px] rounded-full blur-3xl opacity-13" style={{ background: isDarkMode ? 'radial-gradient(circle, #14b8a6 0%, rgba(20, 184, 166, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #14b8a6 0%, rgba(20, 184, 166, 0.2) 30%, transparent 60%)' }} />
+          <div className="absolute top-[650px] right-1/6 w-[140px] h-[140px] rounded-full blur-3xl opacity-15" style={{ background: isDarkMode ? 'radial-gradient(circle, #a855f7 0%, rgba(168, 85, 247, 0.3) 30%, transparent 60%)' : 'radial-gradient(circle, #a855f7 0%, rgba(168, 85, 247, 0.2) 30%, transparent 60%)' }} />
+        </div>
+
+        {/* Additional atmospheric effects */}
+        <div className="pointer-events-none absolute inset-0">
+          {/* Subtle noise overlay */}
+          <div 
+            className="absolute inset-0 opacity-20 mix-blend-overlay"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E")`,
+            }}
+          />
+          {/* Light rays effect for dark mode */}
+          {isDarkMode && (
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-0 left-1/4 w-[2px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent transform -skew-x-12" />
+              <div className="absolute top-0 left-3/4 w-[1px] h-full bg-gradient-to-b from-transparent via-white/10 to-transparent transform skew-x-12" />
+            </div>
+          )}
+        </div>
+
+        {/* Hero Section */}
+        <div 
+          ref={heroRef}
+          className="relative flex items-center justify-center overflow-hidden py-20"
+        >
 
         {/* Hero Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -503,10 +554,10 @@ export default function Home() {
             initial={{ opacity: 0, y: -10 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`mx-auto w-max mb-6 rounded-full border ${isDarkMode ? 'border-slate-700 bg-slate-900/60' : 'border-slate-200 bg-white/70'} backdrop-blur px-4 py-2 text-sm flex items-center gap-2`}
+            className={`mx-auto w-max mb-6 rounded-full border ${isDarkMode ? 'border-white/30 bg-white/20 shadow-lg shadow-blue-500/10' : 'border-slate-300/50 bg-white/80 shadow-lg shadow-slate-200/30'} backdrop-blur-xl px-4 py-2 text-sm flex items-center gap-2`}
           >
             <span className="inline-flex h-2 w-2 rounded-full bg-[#00b4d8]" />
-            <span className={`${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>{t.hero.announcement}</span>
+            <span className={`${isDarkMode ? 'text-white' : 'text-slate-700'}`}>{t.hero.announcement}</span>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center text-center lg:text-left">
@@ -521,11 +572,11 @@ export default function Home() {
                   {t.hero.title.split('\n')[0]}
                 </span>
                 <br />
-                <span className={`${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                <span className={`${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
                   {t.hero.title.split('\n')[1]}
                 </span>
               </h1>
-              <p className={`text-lg sm:text-xl lg:text-2xl mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              <p className={`text-lg sm:text-xl lg:text-2xl mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed ${isDarkMode ? 'text-slate-200' : 'text-slate-600'}`}>
                 {t.hero.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -540,7 +591,7 @@ export default function Home() {
                 </motion.button>
 
                 <button
-                  className={`${isDarkMode ? 'bg-white/5 text-white border border-white/10 hover:bg-white/10' : 'bg-slate-900 text-white hover:bg-slate-800'} px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-base sm:text-lg font-semibold transition-all inline-flex items-center gap-3 justify-center`}
+                  className={`${isDarkMode ? 'bg-white/15 text-white border border-white/25 hover:bg-white/20 shadow-lg shadow-blue-500/10' : 'bg-slate-900 text-white hover:bg-white/10 shadow-lg shadow-slate-800/30'} backdrop-blur-xl px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-base sm:text-lg font-semibold transition-all inline-flex items-center gap-3 justify-center`}
                   onClick={() => scrollToSection('how-it-works')}
                 >
                   <Play className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -556,8 +607,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative order-1 lg:order-2"
             >
-              <div className={`w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-[2.5rem] ${isDarkMode ? 'bg-slate-800/60' : 'bg-slate-100/80'} backdrop-blur border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'} flex items-center justify-center shadow-2xl`}>
-                <div className={`w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-r from-[#0055A5]/20 to-[#00b4d8]/20 flex items-center justify-center ${isDarkMode ? 'shadow-2xl shadow-[#0055A5]/20' : 'shadow-2xl shadow-slate-500/20'}`}>
+              <div className={`w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-[2.5rem] ${isDarkMode ? 'bg-slate-700/40 shadow-2xl shadow-slate-900/50' : 'bg-white/80 shadow-xl shadow-slate-200/50'} backdrop-blur-xl border ${isDarkMode ? 'border-slate-600/30' : 'border-white/50'} flex items-center justify-center`}>
+                <div className={`w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-r ${isDarkMode ? 'from-[#0055A5]/30 to-[#00b4d8]/30' : 'from-[#0055A5]/20 to-[#00b4d8]/20'} flex items-center justify-center ${isDarkMode ? 'shadow-2xl shadow-[#0055A5]/30' : 'shadow-2xl shadow-slate-500/20'}`}>
                   <Zap className="h-20 w-20 sm:h-28 sm:w-28 text-[#00b4d8]" />
                 </div>
               </div>
@@ -611,12 +662,12 @@ export default function Home() {
             <ChevronDown className="h-8 w-8 text-[#0055A5]" />
           </motion.div>
         </motion.div>
-      </section>
+        </div>
 
-      {/* Trusted By / Logo wall */}
-      <section className={`${isDarkMode ? 'bg-slate-900' : 'bg-white'} py-8 sm:py-12`}>
+        {/* Trusted By / Logo wall */}
+        <div className="py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} mb-4 sm:mb-6`}>{t.trusted.title}</p>
+          <p className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-slate-300' : 'text-slate-500'} mb-4 sm:mb-6`}>{t.trusted.title}</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center gap-4 sm:gap-6 opacity-80">
             {[
               { src: '/vercel.svg', alt: 'Vercel' },
@@ -633,14 +684,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+        </div>
 
-      {/* Features Section */}
-      <section 
-        id="features"
-        ref={featuresRef}
-        className={`py-16 sm:py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
-      >
+        {/* Features Section */}
+        <div 
+          id="features"
+          ref={featuresRef}
+          className="py-16 sm:py-24"
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -651,7 +702,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
               {t.features.title}
             </h2>
-            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-2xl mx-auto`}>
+            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} max-w-2xl mx-auto`}>
               {t.features.subtitle}
             </p>
           </motion.div>
@@ -685,27 +736,27 @@ export default function Home() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className={`group ${isDarkMode ? 'bg-slate-900 hover:bg-slate-900/80' : 'bg-white hover:bg-slate-50'} p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border ${isDarkMode ? 'border-slate-700 hover:border-[#0055A5]' : 'border-slate-200 hover:border-[#0055A5]'}`}
+                className={`group ${isDarkMode ? 'bg-white/20 hover:bg-white/25 shadow-xl shadow-blue-500/10' : 'bg-white/80 hover:bg-white/90 shadow-xl shadow-slate-200/50'} backdrop-blur-xl p-6 sm:p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border ${isDarkMode ? 'border-white/30 hover:border-[#00b4d8]/50' : 'border-white/50 hover:border-[#0055A5]/50'}`}
               >
                 <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{feature.title}</h3>
-                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed text-sm sm:text-base`}>
+                <p className={`${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed text-sm sm:text-base`}>
                   {feature.description}
                 </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-      </section>
+        </div>
 
-      {/* How It Works Section */}
-      <section 
-        id="how-it-works"
-        ref={howItWorksRef}
-        className={`py-16 sm:py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}
-      >
+        {/* How It Works Section */}
+        <div 
+          id="how-it-works"
+          ref={howItWorksRef}
+          className="py-16 sm:py-24"
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -716,7 +767,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">
               {t.howItWorks.title}
             </h2>
-            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-2xl mx-auto`}>
+            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} max-w-2xl mx-auto`}>
               {t.howItWorks.subtitle}
             </p>
           </motion.div>
@@ -760,7 +811,7 @@ export default function Home() {
                   className={`flex flex-col lg:flex-row items-center text-center lg:text-left ${step.side === 'right' ? 'lg:flex-row-reverse lg:text-right' : ''}`}
                 >
                   <div className={`lg:w-1/2 ${step.side === 'right' ? 'lg:pl-8 xl:pl-16' : 'lg:pr-8 xl:pr-16'} mb-8 lg:mb-0`}>
-                    <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} p-6 sm:p-8 rounded-3xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+                    <div className={`${isDarkMode ? 'bg-white/20 shadow-lg shadow-blue-500/10' : 'bg-white/80 shadow-lg shadow-slate-200/30'} backdrop-blur-xl p-6 sm:p-8 rounded-3xl border ${isDarkMode ? 'border-white/30' : 'border-white/50'}`}>
                       <div className="flex items-center justify-center lg:justify-start mb-4">
                         <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-lg mr-3 sm:mr-4`}>
                           {step.number}
@@ -770,7 +821,7 @@ export default function Home() {
                         </div>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-bold mb-3">{step.title}</h3>
-                      <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed text-sm sm:text-base`}>
+                      <p className={`${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed text-sm sm:text-base`}>
                         {step.description}
                       </p>
                     </div>
@@ -787,14 +838,14 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+        </div>
 
-      {/* About Section */}
-      <section 
-        id="about"
-        ref={aboutRef}
-        className={`py-16 sm:py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
-      >
+        {/* About Section */}
+        <div 
+          id="about"
+          ref={aboutRef}
+          className="py-16 sm:py-24"
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -806,22 +857,22 @@ export default function Home() {
               {t.about.title}
             </h2>
             <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-              <p className={`text-base sm:text-lg lg:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+              <p className={`text-base sm:text-lg lg:text-xl ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed`}>
                 {t.about.description1}
               </p>
-              <p className={`text-base sm:text-lg lg:text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+              <p className={`text-base sm:text-lg lg:text-xl ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed`}>
                 {t.about.description2}
               </p>
             </div>
           </motion.div>
         </div>
-      </section>
+        </div>
 
-      {/* Developer Section */}
-      <section 
-        id="developer"
-        className={`py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}
-      >
+        {/* Developer Section */}
+        <div 
+          id="developer"
+          className="py-24"
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -834,17 +885,17 @@ export default function Home() {
                 {t.developer.title}
               </h2>
               
-              <div className={`${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} p-8 md:p-12 rounded-3xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+              <div className={`${isDarkMode ? 'bg-white/20 shadow-xl shadow-blue-500/20' : 'bg-white/80 shadow-xl shadow-slate-200/50'} backdrop-blur-xl p-8 md:p-12 rounded-3xl border ${isDarkMode ? 'border-white/30' : 'border-white/50'}`}>
                 <div className="flex items-center justify-center mb-8">
                   <div className="w-24 h-24 bg-gradient-to-r from-[#0055A5] to-[#00b4d8] rounded-full flex items-center justify-center">
                     <User className="h-12 w-12 text-white" />
                   </div>
                 </div>
-                <div className={`text-lg ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed mb-8 whitespace-pre-line text-left`}>
+                <div className={`text-lg ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed mb-8 whitespace-pre-line text-left`}>
                   {t.developer.content}
                 </div>
                 
-                <div className={`border-t ${isDarkMode ? 'border-slate-700' : 'border-slate-300'} pt-8`}>
+                <div className={`border-t ${isDarkMode ? 'border-white/20' : 'border-slate-300'} pt-8`}>
                   <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} mb-4 font-medium`}>
                     {t.developer.socialContact}
                   </p>
@@ -870,13 +921,13 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+        </div>
 
-      {/* FAQ Section */}
-      <section 
-        id="faq"
-        className={`py-24 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}
-      >
+        {/* FAQ Section */}
+        <div 
+          id="faq"
+          className="py-24"
+        >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -900,20 +951,20 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`${isDarkMode ? 'bg-slate-900' : 'bg-white'} p-6 md:p-8 rounded-2xl border ${isDarkMode ? 'border-slate-700' : 'border-slate-200'} hover:border-[#0055A5] transition-colors`}
+                className={`${isDarkMode ? 'bg-slate-900' : 'bg-white'} p-6 md:p-8 rounded-2xl border ${isDarkMode ? 'border-white/20' : 'border-white/30'} hover:border-[#0055A5] transition-colors`}
               >
                 <h3 className="text-xl font-semibold mb-3">{faq.q}</h3>
-                <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed`}>
+                <p className={`${isDarkMode ? 'text-slate-200' : 'text-slate-600'} leading-relaxed`}>
                   {faq.a}
                 </p>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+        </div>
 
-      {/* CTA Section */}
-      <section className={`py-24 ${isDarkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}>
+        {/* CTA Section */}
+        <div className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -923,7 +974,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#0055A5] to-[#f97316] bg-clip-text text-transparent">
               {t.cta.title}
             </h2>
-            <p className={`text-xl ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} mb-10 max-w-2xl mx-auto`}>
+            <p className={`text-xl ${isDarkMode ? 'text-slate-200' : 'text-slate-600'} mb-10 max-w-2xl mx-auto`}>
               {t.cta.subtitle}
             </p>
             
@@ -938,10 +989,10 @@ export default function Home() {
             </motion.button>
           </motion.div>
         </div>
-      </section>
+        </div>
 
-      {/* Footer */}
-      <footer className={`${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-slate-100 border-slate-200'} border-t py-16 transition-colors duration-300`}>
+        {/* Footer */}
+        <footer className="border-t py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
@@ -952,7 +1003,7 @@ export default function Home() {
                 </div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-[#0055A5] to-[#00b4d8] bg-clip-text text-transparent">Şarjet</span>
               </div>
-              <p className={`${isDarkMode ? 'text-slate-300' : 'text-slate-600'} max-w-md leading-relaxed`}>
+              <p className={`${isDarkMode ? 'text-slate-200' : 'text-slate-600'} max-w-md leading-relaxed`}>
                 {selectedLanguage === 'EN' 
                   ? 'Making electric vehicle charging simple and accessible for everyone. Power your journey with confidence.'
                   : 'Elektrikli araç şarjını herkes için basit ve erişilebilir hale getiriyoruz. Yolculuğunuza güvenle güç katın.'
@@ -966,7 +1017,7 @@ export default function Home() {
                 {selectedLanguage === 'EN' ? 'Contact' : 'İletişim'}
               </h4>
               <div className="space-y-3">
-                <a href="mailto:contact@sarjet.com" className={`${isDarkMode ? 'text-slate-300 hover:text-[#00b4d8]' : 'text-slate-600 hover:text-[#0055A5]'} transition-colors flex items-center`}>
+                <a href="mailto:contact@sarjet.com" className={`${isDarkMode ? 'text-slate-200 hover:text-[#00b4d8]' : 'text-slate-600 hover:text-[#0055A5]'} transition-colors flex items-center`}>
                   <Mail className="h-4 w-4 mr-2" />
                   contact@sarjet.com
                 </a>
@@ -992,7 +1043,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={`pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} text-center ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
+          <div className={`pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-white/30'} text-center ${isDarkMode ? 'text-slate-400' : 'text-slate-500'} transition-colors duration-300`}>
             <p>{t.footer.copyright}</p>
             <p className="mt-2 text-sm">
               {selectedLanguage === 'EN' 
@@ -1002,7 +1053,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </footer>
+        </footer>
+
+      </section>
     </div>
   );
 }
